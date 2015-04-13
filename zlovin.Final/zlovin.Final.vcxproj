@@ -10,17 +10,21 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\source.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4D893976-8B05-4327-9251-388A69523382}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>zlovinFinal</RootNamespace>
+    <ProjectName>Arc</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -41,25 +45,40 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)Game\</OutDir>
+    <IntDir>$(ProjectDir)Temp\</IntDir>
+    <IncludePath>$(ProjectDir)ThirdParty\SDL2-2.0.3\include;$(ProjectDir)ThirdParty\SDL2_image-2.0.0\include;$(ProjectDir)ThirdParty\SDL2_ttf-2.0.12\include;$(ProjectDir)ThirdParty\Box2D;$(ProjectDir)ThirdParty\SDL2_gfx-1.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)ThirdParty\SDL2-2.0.3\lib\x86;$(ProjectDir)ThirdParty\SDL2_image-2.0.0\lib\x86;$(ProjectDir)ThirdParty\SDL2_ttf-2.0.12\lib\x86;$(ProjectDir)ThirdParty\Box2D\Box2D\lib;$(ProjectDir)ThirdParty\SDL2_gfx-1.0.1\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeaderFile />
-      <PrecompiledHeaderOutputFile />
+      <PrecompiledHeaderFile>No</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;Box2D.lib;SDL2_gfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(ProjectDir)ThirdParty\SDL2-2.0.3\lib\x86\*.dll" "$(ProjectDir)"
+copy "$(ProjectDir)ThirdParty\SDL2_gfx-1.0.1\lib\x86\*.dll" "$(ProjectDir)"</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>move "$(ProjectDir)*.dll" "$(ProjectDir)Game";
+xcopy "$(ProjectDiir)Assets" "$(ProjectDir)Game\Assets" /E /I /F /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -79,9 +98,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="zlovin.Final.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
