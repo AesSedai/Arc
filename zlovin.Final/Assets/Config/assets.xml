@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<Assets>
+	<Art>
+		<ArtAsset name="Ship" file="./Assets/Images/Art_Ship_grey.png"/>
+	</Art>
+	<Body>
+		<BodyAsset name="Ship" shape="circle" radius="50"/>
+	</Body>
+</Assets>

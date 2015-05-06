@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<Level>
+    <!-- NPC Layout for Game 	-->
+    <GameAsset name="Ship" x="400.0f" y="300.0f" angle="0.0f"/>
+</Level>

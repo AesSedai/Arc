@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Level>
+    <!-- NPC Layout for Game 	-->
+    <GameAsset name="Player">
+		<RenderComponent name="Ship"></RenderComponent>
+		<BodyComponent name="Ship" x="400.0f" y="300.0f" angle="0.0f"></BodyComponent>
+	</GameAsset>
+</Level>
