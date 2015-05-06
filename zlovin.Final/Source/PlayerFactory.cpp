@@ -39,9 +39,7 @@ std::shared_ptr<Object> PlayerFactory::Create(Game* g, tinyxml2::XMLNode* node, 
             float x = std::stof(elem->Attribute("x"));
             float y = std::stof(elem->Attribute("y"));
             float a = std::stof(elem->Attribute("angle"));
-            float w = obj->GetComponent<RenderComponent>()->GetWidth();
-            float h = obj->GetComponent<RenderComponent>()->GetHeight();
-            body->Initialize(g->GetWorld(), g->GetBAssetLibrary()->Search(n), x, y, a, w, h, 0.1f);
+            body->Initialize(g->GetWorld(), g->GetBAssetLibrary()->Search(n), x, y, a);
             obj->AddComponent(body);
         }
     }

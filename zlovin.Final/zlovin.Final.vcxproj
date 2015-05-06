@@ -22,6 +22,7 @@
     <ClCompile Include="Source\InputDevice.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\ObjectFactory.cpp" />
+    <ClCompile Include="Source\PlanetFactory.cpp" />
     <ClCompile Include="Source\PlayerBehaviorComponent.cpp" />
     <ClCompile Include="Source\PlayerFactory.cpp" />
     <ClCompile Include="Source\RenderComponent.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Source\InputDevice.h" />
     <ClInclude Include="Source\Object.h" />
     <ClInclude Include="Source\ObjectFactory.h" />
+    <ClInclude Include="Source\PlanetFactory.h" />
     <ClInclude Include="Source\PlayerBehaviorComponent.h" />
     <ClInclude Include="Source\PlayerFactory.h" />
     <ClInclude Include="Source\RenderComponent.h" />

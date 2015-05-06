@@ -14,7 +14,7 @@ public:
     BodyComponent(std::shared_ptr<Object>);
     ~BodyComponent();
     bool Initialize();
-    void Initialize(b2World* world, b2Shape*, float x, float y, float a, float w, float h, float d);
+    void Initialize(b2World* world, b2FixtureDef* shape, float x, float y, float a);
 
     void Start();
     void Update();
@@ -29,7 +29,5 @@ protected:
 
     //Box2D Physics Components
     b2BodyDef bd;
-    b2PolygonShape shape;
-    b2FixtureDef shapefd;
     b2Body* body;
 };

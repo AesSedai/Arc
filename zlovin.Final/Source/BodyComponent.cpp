@@ -12,7 +12,7 @@ bool BodyComponent::Initialize()
     return true;
 }
 
-void BodyComponent::Initialize(b2World* world, b2Shape* shape, float x, float y, float a, float w, float h, float d)
+void BodyComponent::Initialize(b2World* world, b2FixtureDef* shapefd, float x, float y, float a)
 {
     //Intialize Body Definition
     bd.type = b2_dynamicBody;
@@ -22,14 +22,8 @@ void BodyComponent::Initialize(b2World* world, b2Shape* shape, float x, float y,
     //Create Body within Physics World
     body = world->CreateBody(&bd);  //Register Body with Physics World
 
-    //Initialize Fixture Definition (shape, density, restitution)
-    shapefd.shape = shape;
-    shapefd.density = d;
-    shapefd.friction = 0.5f;
-    shapefd.restitution = 0.9f;
-
     //Create Fixture within Body (links to Physics World)
-    body->CreateFixture(&shapefd); //Register fixture with physics world
+    body->CreateFixture(shapefd); //Register fixture with physics world
 }
 
 void BodyComponent::Start(){}

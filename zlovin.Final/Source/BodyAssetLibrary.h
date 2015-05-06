@@ -17,8 +17,8 @@ public:
 
     //public methods
     bool Initialize(std::string path);
-    b2Shape* Search(std::string string);
+    b2FixtureDef* Search(std::string string);
 
 private:
-    std::map<std::string, b2Shape*> library;
+    std::map<std::string, b2FixtureDef*> library;
 };

@@ -5,4 +5,8 @@
 		<RenderComponent name="Ship"></RenderComponent>
 		<BodyComponent name="Ship" x="400.0f" y="300.0f" angle="0.0f"></BodyComponent>
 	</GameAsset>
+	<GameAsset name="Planet">
+		<RenderComponent name="Home_Planet"></RenderComponent>
+		<BodyComponent name="Home_Planet" x="0.0f" y="0.0f" angle="0.0f"></BodyComponent>
+	</GameAsset>
 </Level>
