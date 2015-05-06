@@ -1,5 +1,6 @@
 #include "View.h"
 #include "InputDevice.h"
+#include "Common.h"
 
 View::View(void)
 {
@@ -40,8 +41,14 @@ GAME_VEC View::getPosition()
 void View::Update(GAME_FLT gameTime)
 {
     gameTime;
-    if(iDevice->GetEvent(GAME_UP)) position.y -= 1.0;
-    if(iDevice->GetEvent(GAME_DOWN)) position.y += 1.0;
-    if(iDevice->GetEvent(GAME_LEFT)) position.x -= 1.0;
-    if(iDevice->GetEvent(GAME_RIGHT)) position.x += 1.0;
+    //if(iDevice->GetEvent(GAME_UP)) position.y -= 1.0;
+    //if(iDevice->GetEvent(GAME_DOWN)) position.y += 1.0;
+    //if(iDevice->GetEvent(GAME_LEFT)) position.x -= 1.0;
+    //if(iDevice->GetEvent(GAME_RIGHT)) position.x += 1.0;
+}
+
+void View::setPosition(b2Vec2 p)
+{
+    position.x = PW2RW(p.x)-400;
+    position.y = PW2RW(p.y)-300;
 }

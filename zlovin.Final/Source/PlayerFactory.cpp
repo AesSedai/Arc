@@ -55,6 +55,7 @@ std::shared_ptr<Object> PlayerFactory::Create(Game* g, tinyxml2::XMLNode* node, 
     std::shared_ptr<PlayerBehaviorComponent> behavior = std::make_shared<PlayerBehaviorComponent>(obj);
     behavior->Initialize();
     behavior->SetInputDevice(g->GetInputDevice());
+    behavior->SetView(g->GetView());
 
     obj->AddComponent(behavior);
 

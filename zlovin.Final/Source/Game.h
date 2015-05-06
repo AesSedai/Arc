@@ -41,6 +41,7 @@ public:
     GameAssetLibrary* GetGAssetLibrary();
     ArtAssetLibrary* GetAAssetLibrary();
     BodyAssetLibrary* GetBAssetLibrary();
+    View* GetView();
 
 private:
     //variables

@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Component.h"
+#include "Box2D/Box2D.h"
+
+class View;
 class Object;
 class InputDevice;
 
@@ -14,9 +17,12 @@ public:
     void Update();
     void Finish();
     void SetInputDevice(InputDevice* i);
+    void SetView(View* i);
+    b2Vec2 GetPosition();
 
 protected:
     float dt;
     float rotateAmount;
     InputDevice* iDevice;
+    View* view;
 };

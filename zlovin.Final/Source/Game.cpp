@@ -210,6 +210,11 @@ InputDevice* Game::GetInputDevice()
     return iDevice;
 }
 
+View* Game::GetView()
+{
+    return view;
+}
+
 b2World* Game::GetWorld()
 {
     return world;

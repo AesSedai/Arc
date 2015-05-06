@@ -3,6 +3,7 @@
 #include "BodyComponent.h"
 #include "Common.h"
 #include "InputDevice.h"
+#include "View.h"
 
 PlayerBehaviorComponent::PlayerBehaviorComponent(std::shared_ptr<Object> owner) : Component(owner){}
 
@@ -55,6 +56,9 @@ void PlayerBehaviorComponent::Update(void)
     {
         body->SetAngularVelocity(0.0f);
     }
+
+    view->setPosition(body->GetPosition());
+
 }
 
 void PlayerBehaviorComponent::Finish(void)
@@ -64,4 +68,16 @@ void PlayerBehaviorComponent::Finish(void)
 void PlayerBehaviorComponent::SetInputDevice(InputDevice* i)
 {
     iDevice = i;
+}
+
+void PlayerBehaviorComponent::SetView(View* v)
+{
+    view = v;
+}
+
+b2Vec2 PlayerBehaviorComponent::GetPosition()
+{
+    std::shared_ptr<BodyComponent> bodyComponent = _owner->GetComponent<BodyComponent>();
+    b2Body* body = bodyComponent->GetBody();
+    return body->GetPosition();
 }

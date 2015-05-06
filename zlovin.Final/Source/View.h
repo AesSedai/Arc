@@ -6,6 +6,7 @@
 
 //Dependencies
 #include "Definitions.h"
+#include "Box2D/Box2D.h"
 
 //Forward Declarations
 class InputDevice;
@@ -21,6 +22,7 @@ public:
     void Update(GAME_FLT gameTime); //The view responds to GAME_EVENTs. Initially the current GAME_EVENT is requested from the InputDevice.
     //The View then responds to keyboard events by shifting its position in accordance with the events.
     GAME_VEC getPosition(void);
+    void setPosition(b2Vec2 p);
 
 private:
     InputDevice* iDevice;
