@@ -6,7 +6,11 @@
 		<BodyComponent name="Ship" x="400.0f" y="300.0f" angle="0.0f"></BodyComponent>
 	</GameAsset>
 	<GameAsset name="Planet">
-		<RenderComponent name="Home_Planet"></RenderComponent>
-		<BodyComponent name="Home_Planet" x="0.0f" y="0.0f" angle="0.0f"></BodyComponent>
+		<RenderComponent name="Planet_1"></RenderComponent>
+		<BodyComponent name="Planet_1" x="0.0f" y="500.0f" angle="0.0f"></BodyComponent>
 	</GameAsset>
+  <GameAsset name="Planet">
+    <RenderComponent name="Planet_2"></RenderComponent>
+    <BodyComponent name="Planet_2" x="700.0f" y="0.0f" angle="0.0f"></BodyComponent>
+  </GameAsset>
 </Level>

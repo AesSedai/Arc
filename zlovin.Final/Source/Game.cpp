@@ -177,7 +177,6 @@ void Game::Run()
 {
     timer->start();
     Update();
-    view->Update( gameTime );
     world->Step( dt, 8, 3 );
     gDevice->Begin();
     gDevice->Draw();

@@ -49,6 +49,6 @@ void View::Update(GAME_FLT gameTime)
 
 void View::setPosition(b2Vec2 p)
 {
-    position.x = PW2RW(p.x)-400;
-    position.y = PW2RW(p.y)-300;
+    position.x = (GAME_FLT)PW2RW(p.x)-400.0f;
+    position.y = (GAME_FLT)PW2RW(p.y)-300.0f;
 }

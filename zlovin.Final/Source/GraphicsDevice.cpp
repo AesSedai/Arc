@@ -77,7 +77,7 @@ bool GraphicsDevice::Initialize(bool fullScreen)
     }
 
     //Set the background color (default)
-    SDL_SetRenderDrawColor(renderer,255,228,196,255);
+    SDL_SetRenderDrawColor(renderer,0,0,0,255);
 
     return(true);
 }

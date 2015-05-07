@@ -2,10 +2,12 @@
 <Assets>
 	<Art>
 		<ArtAsset name="Ship" file="./Assets/Images/Art_Ship_grey.png"/>
-		<ArtAsset name="Home_Planet" file="./Assets/Images/planet_1_0_cropped.png"/>
+		<ArtAsset name="Planet_1" file="./Assets/Images/planet_1_0_cropped.png"/>
+    <ArtAsset name="Planet_2" file="./Assets/Images/planet_2_0_cropped.png"/>
 	</Art>
 	<Body>
 		<BodyAsset name="Ship" shape="circle" radius="50" friction="0.5f" restitution="0.9f" density="0.1f"/>
-		<BodyAsset name="Home_Planet" shape="circle" radius="235" friction="0.5f" restitution="0.9f" density="100000.0f"/>
+		<BodyAsset name="Planet_1" shape="circle" radius="235" friction="0.5f" restitution="0.9f" density="100000.0f"/>
+    <BodyAsset name="Planet_2" shape="circle" radius="230" friction="0.5f" restitution="0.9f" density="100000.0f"/>
 	</Body>
 </Assets>

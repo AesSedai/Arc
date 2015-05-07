@@ -16,6 +16,7 @@
 //Dependencies
 #include "Definitions.h"
 #include "stdlib.h"
+#include <string>
 
 //========================================
 //Box2D Functions
@@ -52,3 +53,14 @@ inline GAME_FLT RandomFloat(GAME_FLT a, GAME_FLT b) {
     GAME_FLT r = random * diff;
     return a + r;
 }
+
+struct fixture_params {
+    std::string name;
+    std::string shape;
+    GAME_FLT radius;
+    GAME_FLT height;
+    GAME_FLT width;
+    GAME_FLT friction;
+    GAME_FLT density;
+    GAME_FLT restitution;
+};

@@ -40,46 +40,17 @@ bool BodyAssetLibrary::Initialize(std::string path)
     //Get child elements
     for(node; node != nullptr; node = node->NextSibling())
     {
-        std::string name = node->ToElement()->Attribute("name");
-        std::string shape = node->ToElement()->Attribute("shape");
-        b2FixtureDef* shapefd = new b2FixtureDef;
-        if(shape.compare("polygon") == 0)
+        fixture_params* params = new fixture_params;
+        params->name = node->ToElement()->Attribute("name");
+        params->shape = node->ToElement()->Attribute("shape");
+        params->friction = std::stof(node->ToElement()->Attribute("friction"));
+        params->density = std::stof(node->ToElement()->Attribute("density"));
+        params->restitution = std::stof(node->ToElement()->Attribute("restitution"));
+
+        if(params->shape.compare("circle") == 0)
         {
-            b2PolygonShape* s = new b2PolygonShape;
-            std::vector<b2Vec2> vertices;
-            std::string c = node->ToElement()->Attribute("coords");
-            std::vector<std::string> coords;
-            boost::split(coords, c, boost::is_any_of(","), boost::token_compress_on);
-
-            for(int i = 0; i < coords.size(); i = i + 2)
-            {
-                std::cout << coords[i] << ", " << coords[i+1] << std::endl;
-                vertices.push_back(b2Vec2(RW2PW(boost::lexical_cast<GAME_INT>(coords[i])), RW2PW(boost::lexical_cast<GAME_INT>(coords[i+1]))));
-            }
-
-            s->Set(vertices.data(), vertices.size());
-
-            shapefd->shape = s;
-            shapefd->density = std::stof(node->ToElement()->Attribute("density"));
-            shapefd->friction = std::stof(node->ToElement()->Attribute("friction"));
-            shapefd->restitution = std::stof(node->ToElement()->Attribute("restitution"));
-
-            library.insert(std::pair<std::string, b2FixtureDef*>(name, shapefd));
-        }
-        if(shape.compare("circle") == 0)
-        {
-            b2CircleShape* s = new b2CircleShape;
-            GAME_INT radius = boost::lexical_cast<GAME_INT>(node->ToElement()->Attribute("radius"));
-            s->m_radius = RW2PW(radius);
-
-            std::cout << node->ToElement()->Attribute("density") << ", " << node->ToElement()->Attribute("friction") << ", " << node->ToElement()->Attribute("restitution") << std::endl;
-            
-            shapefd->shape = s;
-            shapefd->density = std::stof(node->ToElement()->Attribute("density"));
-            shapefd->friction = std::stof(node->ToElement()->Attribute("friction"));
-            shapefd->restitution = std::stof(node->ToElement()->Attribute("restitution"));
-
-            library.insert(std::pair<std::string, b2FixtureDef*>(name, shapefd));
+            params->radius = std::stof(node->ToElement()->Attribute("radius"));
+            library.insert(std::pair<std::string, fixture_params*>(params->name, params));
         }
     }
 
@@ -88,12 +59,22 @@ bool BodyAssetLibrary::Initialize(std::string path)
     return true;
 }
 
-b2FixtureDef* BodyAssetLibrary::Search(std::string string)
+b2FixtureDef* BodyAssetLibrary::Create(std::string string)
 {
-    std::map<std::string, b2FixtureDef*>::iterator it = library.find(string);
+    std::map<std::string, fixture_params*>::iterator it = library.find(string);
     if(it != library.end())
     {
-        return it->second;
+        if(it->second->shape.compare("circle") == 0)
+        {
+            b2FixtureDef* shapefd = new b2FixtureDef;
+            b2CircleShape* shape = new b2CircleShape;
+            shape->m_radius = RW2PW(it->second->radius);
+            shapefd->shape = shape;
+            shapefd->friction = it->second->friction;
+            shapefd->density = it->second->density;
+            shapefd->restitution = it->second->restitution;
+            return shapefd;
+        }
+        else return nullptr;
     }
-    return nullptr;
 }
